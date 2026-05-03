@@ -282,55 +282,35 @@
     }
     .hero-trust .stars { color: var(--gold); letter-spacing: 2px; }
 
-    /* Hero card (right column — glass) */
-    .hero-card {
-      position: relative;
-      background: linear-gradient(160deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.04) 100%);
-      border: 1px solid rgba(255,255,255,.14);
+    /* Hero photo (right column) */
+    .hero-photo-wrap {
+      position: relative; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,.45);
+    }
+    .hero-photo {
+      width: 100%; display: block;
+      aspect-ratio: 4/5; object-fit: cover;
       border-radius: 18px;
-      padding: 28px;
-      backdrop-filter: blur(14px);
-      box-shadow: var(--shadow-lg);
     }
-    .hero-card-head {
+    .hero-photo-badge {
+      position: absolute; bottom: 20px; left: 20px; right: 20px;
+      background: rgba(7,23,41,.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 12px; padding: 14px 18px;
       display: flex; align-items: center; justify-content: space-between;
-      padding-bottom: 18px; margin-bottom: 18px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
     }
-    .hero-card-head .pill {
-      font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+    .hero-photo-badge .pill {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase;
       padding: 5px 10px; border-radius: 6px;
       background: rgba(37,211,102,.16); color: #7be7a4;
       border: 1px solid rgba(37,211,102,.3);
     }
-    .hero-card-title { font-family: var(--font-head); color: #fff; font-weight: 600; }
-    .hero-card-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    .hero-photo-stat {
+      font-size: .9rem; color: rgba(255,255,255,.8);
     }
-    .hc-stat {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 12px;
-      padding: 16px;
-    }
-    .hc-stat .num {
-      font-family: var(--font-head);
-      font-size: 1.85rem; font-weight: 700;
-      color: var(--orange);
-      line-height: 1;
-    }
-    .hc-stat .lbl {
-      font-size: .82rem; color: rgba(255,255,255,.65);
-      margin-top: 6px;
-    }
-    .hc-meta {
-      margin-top: 18px; padding-top: 16px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      display: flex; align-items: center; gap: 10px;
-      color: rgba(255,255,255,.7); font-size: .88rem;
-    }
-    .hc-meta svg { width: 18px; height: 18px; color: var(--orange); flex-shrink: 0; }
+    .hero-photo-stat strong { color: var(--orange); font-family: var(--font-head); font-size: 1.1rem; }
 
     /* Hero stats bar */
     .hero-bar {
@@ -647,31 +627,59 @@
       color: rgba(255,255,255,.65);
       font-size: 1rem; margin-top: 14px;
     }
-    .brands-grid {
+    /* marquee container */
+    .brands-marquee-wrap {
       margin-top: 48px;
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 14px;
+      overflow: hidden;
+      position: relative;
     }
-    @media (max-width: 880px) { .brands-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 480px) { .brands-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* fade edges */
+    .brands-marquee-wrap::before,
+    .brands-marquee-wrap::after {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .brands-marquee-wrap::before {
+      left: 0;
+      background: linear-gradient(to right, var(--navy), transparent);
+    }
+    .brands-marquee-wrap::after {
+      right: 0;
+      background: linear-gradient(to left, var(--navy), transparent);
+    }
+    .brands-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: marquee-scroll 28s linear infinite;
+    }
+    .brands-track:hover { animation-play-state: paused; }
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
     .brand {
-      padding: 24px 12px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.10);
+      flex-shrink: 0;
+      padding: 18px 28px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
       border-radius: 10px;
       font-family: var(--font-head);
       font-weight: 600;
-      font-size: 1.05rem;
-      letter-spacing: .01em;
+      font-size: 1rem;
+      letter-spacing: .02em;
       color: rgba(255,255,255,.85);
-      transition: background .25s, border-color .25s, transform .25s;
+      white-space: nowrap;
+      transition: background .25s, border-color .25s, color .25s;
     }
     .brand:hover {
-      background: rgba(255,92,0,.10);
-      border-color: rgba(255,92,0,.4);
+      background: rgba(255,92,0,.12);
+      border-color: rgba(255,92,0,.5);
       color: #fff;
-      transform: translateY(-3px);
     }
 
     /* ============================================================
@@ -804,6 +812,73 @@
       font-size: .82rem; color: var(--text-muted);
     }
     .review-google svg { width: 16px; height: 16px; }
+
+    /* ============================================================
+       GALERIA DE FOTOS (prova visual)
+       ============================================================ */
+    .photo-gallery {
+      background: var(--warm-white);
+      padding: 96px 0;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+    @media (max-width: 880px) { .gallery-grid { grid-template-columns: 1fr; } }
+
+    .gallery-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      box-shadow: var(--shadow-lg);
+    }
+    .gallery-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .55s cubic-bezier(.2,.7,.2,1);
+    }
+    .gallery-card:hover img { transform: scale(1.04); }
+    .gallery-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,19,39,.92) 0%, rgba(6,19,39,.35) 55%, transparent 100%);
+    }
+    .gallery-card-body {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 24px;
+    }
+    .gallery-quote {
+      font-size: .97rem;
+      line-height: 1.55;
+      color: rgba(255,255,255,.9);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .gallery-quote::before { content: "\201C"; }
+    .gallery-quote::after  { content: "\201D"; }
+    .gallery-author {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .gallery-author-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--orange);
+      display: grid; place-items: center;
+      font-family: var(--font-head); font-weight: 700; font-size: .75rem;
+      color: #fff; flex-shrink: 0;
+    }
+    .gallery-author-name {
+      font-family: var(--font-head); font-weight: 600; font-size: .88rem;
+      color: #fff; line-height: 1.3;
+    }
+    .gallery-author-role {
+      font-size: .78rem;
+      color: rgba(255,255,255,.62);
+    }
 
     /* ============================================================
        FORMULÁRIO (navy + pattern)
@@ -1105,33 +1180,12 @@
         </div>
       </div>
 
-      <!-- Glass card -->
-      <div class="hero-card" aria-hidden="true">
-        <div class="hero-card-head">
-          <div class="hero-card-title">Status da equipe</div>
+      <!-- Hero photo card -->
+      <div class="hero-photo-wrap">
+        <img src="foto-tecnico.jpg" alt="Técnico MetalTec realizando manutenção de autoclave" class="hero-photo">
+        <div class="hero-photo-badge">
           <span class="pill">Online agora</span>
-        </div>
-        <div class="hero-card-stats">
-          <div class="hc-stat">
-            <div class="num" data-count="20000" data-suffix="+">0</div>
-            <div class="lbl">Atendimentos realizados</div>
-          </div>
-          <div class="hc-stat">
-            <div class="num" data-count="48" data-suffix="h">0</div>
-            <div class="lbl">Resposta média</div>
-          </div>
-          <div class="hc-stat">
-            <div class="num" data-count="98" data-suffix="%">0</div>
-            <div class="lbl">Resolvidos na 1ª visita</div>
-          </div>
-          <div class="hc-stat">
-            <div class="num" data-count="20" data-suffix=" anos">0</div>
-            <div class="lbl">De experiência técnica</div>
-          </div>
-        </div>
-        <div class="hc-meta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          São Paulo capital + Grande SP (ABCD, Guarulhos, Osasco, Campinas)
+          <span class="hero-photo-stat"><strong>20.000+</strong> atendimentos</span>
         </div>
       </div>
     </div>
@@ -1391,13 +1445,35 @@
       <h2>Especialistas em todas as <span style="color:var(--orange)">marcas líderes</span> do mercado.</h2>
       <div class="lbl">Provavelmente já conhecemos o modelo da sua autoclave.</div>
 
-      <div class="brands-grid">
-        <div class="brand">Dabi Atlante</div>
-        <div class="brand">Cristofoli</div>
-        <div class="brand">Melag</div>
-        <div class="brand">Gnatus</div>
-        <div class="brand">Stermax</div>
-        <div class="brand">Sauter</div>
+      <div class="brands-marquee-wrap">
+        <div class="brands-track">
+          <!-- set 1 -->
+          <div class="brand">Dabi Atlante</div>
+          <div class="brand">Cristofoli</div>
+          <div class="brand">Melag</div>
+          <div class="brand">Gnatus</div>
+          <div class="brand">Stermax</div>
+          <div class="brand">Sauter</div>
+          <div class="brand">Kavo</div>
+          <div class="brand">Maquira</div>
+          <div class="brand">Biotron</div>
+          <div class="brand">Sercon</div>
+          <div class="brand">Baumer</div>
+          <div class="brand">Cassio</div>
+          <!-- set 2 (duplicado para loop contínuo) -->
+          <div class="brand">Dabi Atlante</div>
+          <div class="brand">Cristofoli</div>
+          <div class="brand">Melag</div>
+          <div class="brand">Gnatus</div>
+          <div class="brand">Stermax</div>
+          <div class="brand">Sauter</div>
+          <div class="brand">Kavo</div>
+          <div class="brand">Maquira</div>
+          <div class="brand">Biotron</div>
+          <div class="brand">Sercon</div>
+          <div class="brand">Baumer</div>
+          <div class="brand">Cassio</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1534,6 +1610,69 @@
             Postado no Google
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GALERIA DE FOTOS
+       ============================================================ -->
+  <section class="photo-gallery">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Nosso trabalho em campo</span>
+        <h2>Técnicos que conhecem <span style="color:var(--orange)">cada detalhe</span> da sua autoclave.</h2>
+        <p>20 anos atendendo clínicas, hospitais e laboratórios em São Paulo e Grande SP.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Foto 1: Técnico em campo -->
+        <div class="gallery-card reveal">
+          <img src="foto-tecnico.jpg" alt="Técnico MetalTec realizando manutenção de autoclave" loading="lazy">
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-body">
+            <p class="gallery-quote">Minha autoclave parou numa segunda com 14 pacientes agendados. No dia seguinte o técnico estava aqui. Resolveram na mesma visita.</p>
+            <div class="gallery-author">
+              <div class="gallery-author-dot">CF</div>
+              <div>
+                <div class="gallery-author-name">Dra. Camila Ferreira</div>
+                <div class="gallery-author-role">Clínica Odontológica · Santo André</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 2: Autoclave -->
+        <div class="gallery-card reveal">
+          <img src="foto-autoclave.jpg" alt="Autoclave em manutenção MetalTec" loading="lazy">
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-body">
+            <p class="gallery-quote">Já tentei outras empresas. Só a MetalTec tem técnicos que realmente conhecem autoclave a fundo — resolveram com reparo de R$ 400 o que outros disseram que precisava de troca.</p>
+            <div class="gallery-author">
+              <div class="gallery-author-dot">FC</div>
+              <div>
+                <div class="gallery-author-name">Fernanda Costa</div>
+                <div class="gallery-author-role">Laboratório BioAnálise · São Paulo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Foto 3: Médico/responsável técnico -->
+        <div class="gallery-card reveal">
+          <img src="foto-doutor.jpg" alt="Responsável técnico com autoclave calibrada" loading="lazy">
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-body">
+            <p class="gallery-quote">Precisávamos do certificado de calibração para auditoria da ANVISA em 3 dias. A MetalTec veio, calibrou e entregou toda a documentação com rastreabilidade ao INMETRO no prazo.</p>
+            <div class="gallery-author">
+              <div class="gallery-author-dot">RA</div>
+              <div>
+                <div class="gallery-author-name">Dr. Ricardo Almeida</div>
+                <div class="gallery-author-role">Hospital Dia · São Caetano do Sul</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
