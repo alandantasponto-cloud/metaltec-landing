@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MetalTec - Manutenção especializada de autoclaves em São Paulo. Atendimento emergencial em até 24h. 20 anos de experiência.">
+    <meta name="keywords" content="manutenção autoclave, conserto autoclave São Paulo, autoclave odontológica, MetalTec">
+    <title>MetalTec | Manutenção de Autoclaves em São Paulo - Atendimento em 24h</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metaltec-green': '#1a472a',
+                        'metaltec-green-dark': '#0f2e1a',
+                        'metaltec-green-light': '#2d6a44',
+                        'metaltec-gold': '#c9a961',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- ============================================== -->
+    <!-- GOOGLE ADS CONVERSION TRACKING - INSERIR AQUI  -->
+    <!-- Substituir AW-XXXXXXXXX/XXXXXXXXXXX pelo ID real -->
+    <!-- ============================================== -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-XXXXXXXXX');
+    </script>
+    -->
+
+    <style>
+        * {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: #1a1a1a;
+        }
+
+        /* Hero gradient background */
+        .hero-bg {
+            background: linear-gradient(135deg, #0f2e1a 0%, #1a472a 50%, #0f2e1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(45, 106, 68, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(201, 169, 97, 0.15) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        /* WhatsApp button pulse */
+        @keyframes pulse-whatsapp {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            50% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+        }
+
+        .whatsapp-float {
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        /* Card hover */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(26, 71, 42, 0.15);
+        }
+
+        /* FAQ accordion */
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Form input focus */
+        .form-input:focus {
+            outline: none;
+            border-color: #1a472a;
+            box-shadow: 0 0 0 4px rgba(26, 71, 42, 0.1);
+        }
+
+        /* Success message */
+        .success-message {
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Subtle scroll animation */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- ============================================== -->
+    <!-- HEADER / NAVBAR                                -->
+    <!-- ============================================== -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">⚙️</span>
+                <span class="text-xl sm:text-2xl font-extrabold text-metaltec-green tracking-tight">MetalTec</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+                <a href="#servicos" class="hover:text-metaltec-green transition">Serviços</a>
+                <a href="#diferenciais" class="hover:text-metaltec-green transition">Diferenciais</a>
+                <a href="#depoimentos" class="hover:text-metaltec-green transition">Depoimentos</a>
+                <a href="#faq" class="hover:text-metaltec-green transition">FAQ</a>
+            </div>
+            <a href="#formulario" class="bg-metaltec-green hover:bg-metaltec-green-dark text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-lg text-sm font-semibold transition shadow-md">
+                Solicitar Atendimento
+            </a>
+        </nav>
+    </header>
+
+    <!-- ============================================== -->
+    <!-- 1. HERO                                        -->
+    <!-- ============================================== -->
+    <section class="hero-bg pt-32 pb-20 lg:pt-40 lg:pb-32 px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Column -->
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-metaltec-gold/20 border border-metaltec-gold/40 text-metaltec-gold px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-6">
+                        <span class="w-2 h-2 bg-metaltec-gold rounded-full animate-pulse"></span>
+                        ATENDIMENTO EMERGENCIAL DISPONÍVEL AGORA
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] mb-6">
+                        AUTOCLAVE PAROU?
+                        <span class="block text-metaltec-gold mt-2">A METALTEC RESOLVE EM ATÉ 24H</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-200 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        Atendimento emergencial em São Paulo capital e Grande São Paulo. 20 anos de experiência em manutenção especializada de autoclaves.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#formulario" class="bg-metaltec-gold hover:bg-yellow-600 text-metaltec-green-dark px-8 py-4 rounded-lg font-bold text-base sm:text-lg transition shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5">
+                            QUERO ATENDIMENTO URGENTE →
+                        </a>
+                        <a href="https://wa.me/5511917121402" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-lg font-semibold text-base sm:text-lg transition backdrop-blur-sm">
+                            💬 Falar no WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Trust badges -->
+                    <div class="mt-10 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0">
+                        <div class="text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-extrabold text-metaltec-gold">20+</div>
+                            <div class="text-xs sm:text-sm text-gray-300">Anos no mercado</div>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-extrabold text-metaltec-gold">24h</div>
+                            <div class="text-xs sm:text-sm text-gray-300">Resposta máxima</div>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <div class="text-2xl sm:text-3xl font-extrabold text-metaltec-gold">500+</div>
+                            <div class="text-xs sm:text-sm text-gray-300">Clientes ativos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Column -->
+                <div class="hidden lg:block relative">
+                    <div class="relative bg-gradient-to-br from-metaltec-green-light to-metaltec-green-dark rounded-2xl p-8 border border-white/10 shadow-2xl">
+                        <div class="absolute -top-4 -right-4 bg-metaltec-gold text-metaltec-green-dark px-4 py-2 rounded-lg font-bold text-sm shadow-lg transform rotate-3">
+                            CONFORME ANVISA
+                        </div>
+
+                        <div class="text-center py-8">
+                            <div class="text-8xl mb-4">🔧</div>
+                            <h3 class="text-2xl font-bold text-white mb-3">Técnicos Certificados</h3>
+                            <p class="text-gray-200 mb-6">Equipe especializada em todas as marcas de autoclave do mercado brasileiro.</p>
+
+                            <div class="space-y-3 text-left">
+                                <div class="flex items-center gap-3 bg-white/5 p-3 rounded-lg">
+                                    <span class="text-metaltec-gold text-xl">✓</span>
+                                    <span class="text-white text-sm">Diagnóstico gratuito</span>
+                                </div>
+                                <div class="flex items-center gap-3 bg-white/5 p-3 rounded-lg">
+                                    <span class="text-metaltec-gold text-xl">✓</span>
+                                    <span class="text-white text-sm">Peças originais garantidas</span>
+                                </div>
+                                <div class="flex items-center gap-3 bg-white/5 p-3 rounded-lg">
+                                    <span class="text-metaltec-gold text-xl">✓</span>
+                                    <span class="text-white text-sm">Garantia de 90 dias no serviço</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 2. PROBLEMA                                    -->
+    <!-- ============================================== -->
+    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <span class="inline-block text-metaltec-green font-semibold text-sm uppercase tracking-wider mb-3">O Problema</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Sua autoclave parou e cada hora<br class="hidden sm:block"> custa caro para sua clínica
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Sabemos exatamente o que está em jogo quando o equipamento de esterilização para de funcionar.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Card 1 -->
+                <div class="card-hover bg-red-50 border border-red-100 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5 text-3xl">
+                        📅
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Agenda parada, faturamento zero</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Sem autoclave funcionando, você não consegue esterilizar instrumentos e precisa cancelar atendimentos. Cada dia parado representa milhares de reais perdidos.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card-hover bg-amber-50 border border-amber-100 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-5 text-3xl">
+                        ⚠️
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Risco de notificação ANVISA</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Equipamento sem manutenção em dia ou laudos vencidos podem gerar autuações, multas e até interdição da clínica em fiscalizações da Vigilância Sanitária.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card-hover bg-blue-50 border border-blue-100 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-5 text-3xl">
+                        😟
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pacientes perdidos para concorrência</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Remarcar atendimentos quebra a confiança do paciente. Muitos não voltam, e sua reputação online sofre com avaliações negativas que demoram anos para reconstruir.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 3. POR QUE METALTEC                            -->
+    <!-- ============================================== -->
+    <section id="diferenciais" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <span class="inline-block text-metaltec-green font-semibold text-sm uppercase tracking-wider mb-3">Por que MetalTec</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Não somos apenas mais uma<br class="hidden sm:block"> assistência técnica
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Há duas décadas dedicados exclusivamente a autoclaves. Conhecemos cada marca, cada modelo e cada falha possível.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Diferencial 1 -->
+                <div class="card-hover bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-metaltec-green rounded-lg flex items-center justify-center mb-4 text-2xl">
+                        ⚡
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Resposta em 24h</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Atendimento emergencial garantido em São Paulo capital e região metropolitana, inclusive aos sábados.
+                    </p>
+                </div>
+
+                <!-- Diferencial 2 -->
+                <div class="card-hover bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-metaltec-green rounded-lg flex items-center justify-center mb-4 text-2xl">
+                        🏆
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">20 anos de experiência</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Duas décadas focados exclusivamente em manutenção e calibração de autoclaves de todas as marcas.
+                    </p>
+                </div>
+
+                <!-- Diferencial 3 -->
+                <div class="card-hover bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-metaltec-green rounded-lg flex items-center justify-center mb-4 text-2xl">
+                        📋
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Conformidade ANVISA</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Laudos técnicos e documentação completa para você ficar 100% em dia com a Vigilância Sanitária.
+                    </p>
+                </div>
+
+                <!-- Diferencial 4 -->
+                <div class="card-hover bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-metaltec-green rounded-lg flex items-center justify-center mb-4 text-2xl">
+                        🛡️
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Garantia em todo serviço</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        90 dias de garantia em mão de obra e peças aplicadas. Se voltar a falhar, voltamos sem custo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 4. SERVIÇOS                                    -->
+    <!-- ============================================== -->
+    <section id="servicos" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <span class="inline-block text-metaltec-green font-semibold text-sm uppercase tracking-wider mb-3">Nossos Serviços</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Tudo que sua autoclave precisa<br class="hidden sm:block"> em um só lugar
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Soluções completas para clínicas odontológicas, hospitais e laboratórios.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Serviço 1 -->
+                <div class="card-hover bg-gradient-to-br from-metaltec-green to-metaltec-green-dark rounded-2xl p-7 text-white shadow-lg">
+                    <div class="text-4xl mb-4">🔧</div>
+                    <h3 class="text-xl font-bold mb-2">Manutenção Corretiva</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">
+                        Conserto emergencial de autoclaves com falhas técnicas. Diagnóstico preciso e reparo no mesmo dia, quando possível.
+                    </p>
+                </div>
+
+                <!-- Serviço 2 -->
+                <div class="card-hover bg-gray-50 rounded-2xl p-7 border border-gray-100">
+                    <div class="text-4xl mb-4">🔍</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Manutenção Preventiva</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Plano de manutenção periódica que evita paradas inesperadas e prolonga a vida útil do seu equipamento.
+                    </p>
+                </div>
+
+                <!-- Serviço 3 -->
+                <div class="card-hover bg-gray-50 rounded-2xl p-7 border border-gray-100">
+                    <div class="text-4xl mb-4">📐</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Calibração e Validação</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Calibração com instrumentos rastreáveis ao INMETRO e laudos de validação aceitos pela ANVISA.
+                    </p>
+                </div>
+
+                <!-- Serviço 4 -->
+                <div class="card-hover bg-gray-50 rounded-2xl p-7 border border-gray-100">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Troca de Peças Originais</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Reposição com peças originais ou homologadas pelo fabricante, garantindo desempenho e segurança.
+                    </p>
+                </div>
+
+                <!-- Serviço 5 -->
+                <div class="card-hover bg-gray-50 rounded-2xl p-7 border border-gray-100">
+                    <div class="text-4xl mb-4">📄</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Laudos Técnicos</h3>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Emissão de laudos técnicos completos para fiscalização da Vigilância Sanitária e auditorias internas.
+                    </p>
+                </div>
+
+                <!-- Bonus card / CTA -->
+                <div class="bg-metaltec-gold/10 border-2 border-dashed border-metaltec-gold rounded-2xl p-7 flex flex-col justify-center">
+                    <h3 class="text-xl font-bold text-metaltec-green-dark mb-2">Não encontrou o que precisa?</h3>
+                    <p class="text-gray-700 text-sm mb-4">
+                        Atendemos demandas customizadas. Conte seu caso e enviamos uma proposta.
+                    </p>
+                    <a href="#formulario" class="bg-metaltec-green hover:bg-metaltec-green-dark text-white text-center px-5 py-2.5 rounded-lg font-semibold text-sm transition">
+                        Falar com especialista →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 5. PROVA SOCIAL                                -->
+    <!-- ============================================== -->
+    <section id="depoimentos" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <span class="inline-block text-metaltec-green font-semibold text-sm uppercase tracking-wider mb-3">Prova Social</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Quem confia na MetalTec
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Mais de 500 clínicas, hospitais e laboratórios em São Paulo já contam com nosso atendimento.
+                </p>
+            </div>
+
+            <!-- Métrica central -->
+            <div class="bg-gradient-to-r from-metaltec-green to-metaltec-green-dark rounded-3xl p-10 lg:p-14 text-center mb-12 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-metaltec-gold/10 rounded-full -translate-y-32 translate-x-32"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-metaltec-gold/10 rounded-full translate-y-24 -translate-x-24"></div>
+
+                <div class="relative z-10">
+                    <div class="text-7xl lg:text-8xl font-extrabold text-metaltec-gold mb-3">20+</div>
+                    <div class="text-2xl lg:text-3xl font-bold text-white mb-2">Anos de experiência</div>
+                    <p class="text-gray-200 max-w-xl mx-auto">
+                        Duas décadas resolvendo problemas de autoclaves em São Paulo. Conhecimento técnico que nenhum concorrente recém-chegado consegue oferecer.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Depoimentos -->
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <div class="flex items-center gap-1 mb-4 text-metaltec-gold text-lg">
+                        ★★★★★
+                    </div>
+                    <p class="text-gray-700 text-base leading-relaxed mb-6 italic">
+                        "Nossa autoclave parou numa sexta de manhã e a MetalTec atendeu no mesmo dia. Em 4 horas estava tudo funcionando, sem precisar cancelar a agenda da tarde. Recomendo de olhos fechados."
+                    </p>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
+                        <div class="w-12 h-12 bg-metaltec-green rounded-full flex items-center justify-center text-white font-bold">
+                            DR
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-900">Dr. Ricardo Almeida</div>
+                            <div class="text-sm text-gray-500">Clínica Odontológica - Pinheiros, SP</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <div class="flex items-center gap-1 mb-4 text-metaltec-gold text-lg">
+                        ★★★★★
+                    </div>
+                    <p class="text-gray-700 text-base leading-relaxed mb-6 italic">
+                        "Trabalhamos com a MetalTec há mais de 8 anos no plano de manutenção preventiva. Nunca tivemos problemas em fiscalizações da ANVISA e nossas autoclaves duram muito mais."
+                    </p>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
+                        <div class="w-12 h-12 bg-metaltec-green rounded-full flex items-center justify-center text-white font-bold">
+                            MS
+                        </div>
+                        <div>
+                            <div class="font-bold text-gray-900">Marina Santos</div>
+                            <div class="text-sm text-gray-500">Gerente de Operações - Laboratório Vita</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 6. FORMULÁRIO                                  -->
+    <!-- ============================================== -->
+    <section id="formulario" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-metaltec-green-dark via-metaltec-green to-metaltec-green-dark relative overflow-hidden">
+        <!-- Decorative grid -->
+        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <div class="text-center mb-10">
+                <span class="inline-block bg-metaltec-gold/20 border border-metaltec-gold/40 text-metaltec-gold px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+                    Atendimento Rápido
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+                    Solicite Atendimento Agora
+                </h2>
+                <p class="text-lg text-gray-200">
+                    Preencha o formulário abaixo e nossa equipe técnica retornará em até 1 hora útil.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-2xl">
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message bg-green-50 border-2 border-green-200 rounded-xl p-6 text-center">
+                    <div class="text-5xl mb-3">✅</div>
+                    <h3 class="text-2xl font-bold text-green-800 mb-2">Solicitação enviada com sucesso!</h3>
+                    <p class="text-green-700">
+                        Recebemos seu contato. Em breve um especialista da MetalTec entrará em contato pelo WhatsApp informado.
+                    </p>
+                </div>
+
+                <!-- Form -->
+                <form id="leadForm" action="#" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                    <div>
+                        <label for="nome" class="block text-sm font-semibold text-gray-800 mb-2">
+                            Seu nome <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            required
+                            placeholder="Digite seu nome completo"
+                            class="form-input w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-base transition"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="whatsapp" class="block text-sm font-semibold text-gray-800 mb-2">
+                            WhatsApp <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                            type="tel"
+                            id="whatsapp"
+                            name="whatsapp"
+                            required
+                            placeholder="(11) 99999-9999"
+                            class="form-input w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-base transition"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="problema" class="block text-sm font-semibold text-gray-800 mb-2">
+                            Descreva o problema <span class="text-red-500">*</span>
+                        </label>
+                        <textarea
+                            id="problema"
+                            name="problema"
+                            required
+                            rows="4"
+                            placeholder="Conte qual é o problema com sua autoclave: marca, modelo, sintoma, urgência..."
+                            class="form-input w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-base transition resize-none"
+                        ></textarea>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="w-full bg-metaltec-gold hover:bg-yellow-600 text-metaltec-green-dark font-extrabold py-4 px-6 rounded-lg text-base sm:text-lg transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                    >
+                        QUERO ATENDIMENTO URGENTE →
+                    </button>
+
+                    <p class="text-center text-sm text-gray-500 mt-4">
+                        🔒 Seus dados estão seguros. Retornamos em até 1 hora.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 7. FAQ                                         -->
+    <!-- ============================================== -->
+    <section id="faq" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="inline-block text-metaltec-green font-semibold text-sm uppercase tracking-wider mb-3">Perguntas Frequentes</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Tire suas dúvidas
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Respostas para as perguntas que mais recebemos no dia a dia.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-100 transition">
+                        <span class="font-bold text-gray-900 text-base sm:text-lg pr-4">
+                            Vocês atendem qualquer marca de autoclave?
+                        </span>
+                        <span class="faq-icon text-2xl text-metaltec-green flex-shrink-0">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-700 leading-relaxed">
+                            Sim. Trabalhamos com todas as principais marcas comercializadas no Brasil: Cristófoli, Stermax, Sercon, Phoenix, Baumer, Tuttnauer, entre outras. Nossa equipe técnica é treinada continuamente para acompanhar lançamentos e atualizações tecnológicas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-100 transition">
+                        <span class="font-bold text-gray-900 text-base sm:text-lg pr-4">
+                            Quanto tempo leva para atender um chamado de emergência?
+                        </span>
+                        <span class="faq-icon text-2xl text-metaltec-green flex-shrink-0">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-700 leading-relaxed">
+                            Nosso compromisso é responder em até 1 hora útil após o contato e atender presencialmente em até 24 horas em São Paulo capital e Grande São Paulo. Em muitos casos, conseguimos atender no mesmo dia, dependendo da disponibilidade da agenda técnica.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-100 transition">
+                        <span class="font-bold text-gray-900 text-base sm:text-lg pr-4">
+                            Vocês emitem laudo técnico válido para a ANVISA?
+                        </span>
+                        <span class="faq-icon text-2xl text-metaltec-green flex-shrink-0">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-700 leading-relaxed">
+                            Sim. Emitimos laudos técnicos completos com assinatura de responsável técnico habilitado, calibração rastreável ao INMETRO e toda documentação exigida pela RDC ANVISA. Os laudos são aceitos em fiscalizações da Vigilância Sanitária estadual e municipal.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4">Tem outra dúvida?</p>
+                <a href="https://wa.me/5511917121402" class="inline-flex items-center gap-2 bg-metaltec-green hover:bg-metaltec-green-dark text-white px-7 py-3.5 rounded-lg font-semibold transition shadow-md">
+                    💬 Falar com especialista no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 8. RODAPÉ                                      -->
+    <!-- ============================================== -->
+    <footer class="bg-metaltec-green-dark text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-10">
+                <!-- Logo & Bio -->
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-3xl">⚙️</span>
+                        <span class="text-2xl font-extrabold">MetalTec</span>
+                    </div>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Manutenção especializada de autoclaves em São Paulo. 20 anos de experiência atendendo clínicas, hospitais e laboratórios com excelência técnica e conformidade ANVISA.
+                    </p>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h4 class="font-bold text-metaltec-gold uppercase tracking-wider text-sm mb-4">Contato</h4>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-start gap-2">
+                            <span>📞</span>
+                            <a href="tel:+5511917121402" class="hover:text-white transition">(11) 99999-9999</a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span>💬</span>
+                            <a href="https://wa.me/5511917121402" class="hover:text-white transition">WhatsApp 24h</a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span>✉️</span>
+                            <a href="mailto:contato@metaltec.com.br" class="hover:text-white transition">contato@metaltec.com.br</a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span>📍</span>
+                            <span>São Paulo - SP e Grande São Paulo</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Horário -->
+                <div>
+                    <h4 class="font-bold text-metaltec-gold uppercase tracking-wider text-sm mb-4">Atendimento</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li>Segunda a Sexta: 8h às 18h</li>
+                        <li>Sábado: 8h às 13h</li>
+                        <li class="text-metaltec-gold font-semibold mt-3">Emergência 24h via WhatsApp</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-6 text-center text-sm text-gray-400">
+                <p>© 2026 MetalTec — Manutenção de Autoclaves. Todos os direitos reservados.</p>
+                <p class="mt-2 text-xs">CNPJ: 00.000.000/0001-00 | Responsável Técnico: Eng. [Nome] - CREA [Número]</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================== -->
+    <!-- WHATSAPP FLUTUANTE                             -->
+    <!-- ============================================== -->
+    <a
+        href="https://wa.me/5511917121402?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20para%20minha%20autoclave"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-float fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full w-16 h-16 sm:w-[68px] sm:h-[68px] flex items-center justify-center shadow-2xl transition transform hover:scale-110"
+        aria-label="Falar no WhatsApp"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 sm:w-9 sm:h-9">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- ============================================== -->
+    <!-- JAVASCRIPT                                     -->
+    <!-- ============================================== -->
+    <script>
+        // FAQ Accordion
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const wasActive = item.classList.contains('active');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+
+            // Open clicked (if it wasn't already)
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('leadForm');
+            const successMsg = document.getElementById('successMessage');
+
+            // Basic validation
+            const nome = document.getElementById('nome').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const problema = document.getElementById('problema').value.trim();
+
+            if (!nome || !whatsapp || !problema) {
+                alert('Por favor, preencha todos os campos.');
+                return false;
+            }
+
+            // ==============================================
+            // GOOGLE ADS CONVERSION TRACKING - DISPARO AQUI
+            // Substituir 'AW-XXXXXXXXX/XXXXXXXXXXX' pela tag real
+            // ==============================================
+            // if (typeof gtag === 'function') {
+            //     gtag('event', 'conversion', {
+            //         'send_to': 'AW-XXXXXXXXX/XXXXXXXXXXX',
+            //         'event_callback': function() { console.log('Conversion tracked'); }
+            //     });
+            // }
+
+            // Show success message and hide form
+            form.style.display = 'none';
+            successMsg.classList.add('show');
+
+            // Scroll to message
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Optional: Reset and re-show form after 8s for testing
+            // setTimeout(() => {
+            //     form.reset();
+            //     form.style.display = 'block';
+            //     successMsg.classList.remove('show');
+            // }, 8000);
+
+            return false;
+        }
+
+        // WhatsApp phone mask (basic)
+        document.getElementById('whatsapp').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 6) {
+                value = `(${value.slice(0,2)}) ${value.slice(2,7)}-${value.slice(7)}`;
+            } else if (value.length > 2) {
+                value = `(${value.slice(0,2)}) ${value.slice(2)}`;
+            } else if (value.length > 0) {
+                value = `(${value}`;
+            }
+
+            e.target.value = value;
+        });
+    </script>
+
+</body>
+</html>
