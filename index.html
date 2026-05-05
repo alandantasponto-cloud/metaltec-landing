@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js"></script>
 
   <!-- ================================================================ -->
   <!-- GOOGLE ADS CONVERSION TRACKING — descomente e troque o ID -->
@@ -164,21 +165,53 @@
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
-      height: 72px;
+      height: 84px;
     }
     .logo {
-      display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-head); font-weight: 700; font-size: 1.32rem;
-      color: #fff; letter-spacing: -.02em;
+      display: inline-flex; align-items: center;
+      padding: 5px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.07);
+      box-shadow: 0 0 22px rgba(255,92,0,.7), 0 0 50px rgba(255,92,0,.35), 0 4px 14px rgba(0,0,0,.4);
+      transition: box-shadow .25s;
     }
-    .logo-mark {
-      width: 36px; height: 36px; border-radius: 9px;
-      background: linear-gradient(135deg, var(--orange) 0%, #ff8a3d 100%);
-      display: grid; place-items: center;
-      box-shadow: 0 6px 18px rgba(255,92,0,.45);
+    .logo:hover {
+      box-shadow: 0 0 30px rgba(255,92,0,.9), 0 0 70px rgba(255,92,0,.5), 0 4px 18px rgba(0,0,0,.45);
     }
-    .logo-mark svg { width: 20px; height: 20px; color: #fff; }
+    .logo-img {
+      height: 60px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,.55)) drop-shadow(0 1px 3px rgba(0,0,0,.5));
+    }
     .logo span.accent { color: var(--orange); }
+
+    /* ============================================================
+       HERO SPLINE 3D
+       ============================================================ */
+    .hero-spline-wrap {
+      position: relative; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,.55);
+      height: 480px;
+      background: radial-gradient(ellipse at 60% 30%, rgba(255,92,0,.12) 0%, rgba(6,19,39,.95) 60%),
+                  linear-gradient(160deg, #0a1e38 0%, #061327 100%);
+    }
+    .hero-spline-wrap spline-viewer {
+      width: 100%; height: 100%; display: block;
+    }
+    .hero-spline-spotlight {
+      pointer-events: none;
+      position: absolute;
+      top: -60px; left: -40px;
+      width: 140%; height: 140%;
+      background: radial-gradient(ellipse 55% 45% at 55% 38%, rgba(255,92,0,.18) 0%, transparent 70%);
+      animation: spotMove 6s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+    @keyframes spotMove {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(20px, -15px) scale(1.06); }
+    }
 
     .nav-links {
       display: flex; align-items: center; gap: 28px;
@@ -306,6 +339,12 @@
       padding: 5px 10px; border-radius: 6px;
       background: rgba(37,211,102,.16); color: #7be7a4;
       border: 1px solid rgba(37,211,102,.3);
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+    .hero-photo-badge .pill:hover {
+      background: rgba(37,211,102,.28);
+      border-color: rgba(37,211,102,.55);
     }
     .hero-photo-stat {
       font-size: .9rem; color: rgba(255,255,255,.8);
@@ -1122,10 +1161,7 @@
   <header class="nav">
     <div class="container nav-inner">
       <a href="#" class="logo" aria-label="MetalTec — página inicial">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><circle cx="12" cy="13" r="7"/><path d="M9 13h6M12 10v6"/></svg>
-        </span>
-        Metal<span class="accent">Tec</span>
+        <img src="logo-site-transparent.png" alt="MetalTec" class="logo-img">
       </a>
       <nav>
         <ul class="nav-links">
@@ -1180,11 +1216,16 @@
         </div>
       </div>
 
-      <!-- Hero photo card -->
-      <div class="hero-photo-wrap">
-        <img src="foto-tecnico.jpg" alt="Técnico MetalTec realizando manutenção de autoclave" class="hero-photo">
-        <div class="hero-photo-badge">
-          <span class="pill">Online agora</span>
+      <!-- Hero 3D interativo -->
+      <div class="hero-spline-wrap">
+        <div class="hero-spline-spotlight" aria-hidden="true"></div>
+        <spline-viewer
+          url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+          style="position:relative;z-index:2"
+          loading-anim-type="spinner-small-dark">
+        </spline-viewer>
+        <div class="hero-photo-badge" style="z-index:3">
+          <a href="#contato" class="pill" style="text-decoration:none">Fale conosco</a>
           <span class="hero-photo-stat"><strong>20.000+</strong> atendimentos</span>
         </div>
       </div>
@@ -1858,11 +1899,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-about">
-          <a href="#" class="logo">
-            <span class="logo-mark" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><circle cx="12" cy="13" r="7"/><path d="M9 13h6M12 10v6"/></svg>
-            </span>
-            Metal<span class="accent" style="color:var(--orange)">Tec</span>
+          <a href="#" class="logo" aria-label="MetalTec — página inicial">
+            <img src="logo-site-transparent.png" alt="MetalTec" class="logo-img" style="height:58px">
           </a>
           <p>Manutenção especializada de autoclaves há 15 anos. Mais de 20.000 atendimentos realizados em clínicas, hospitais e laboratórios da Grande SP.</p>
         </div>
