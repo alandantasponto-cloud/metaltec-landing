@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MetalTec SP — Diagnóstico gratuito de conformidade ANVISA para sua autoclave. 15 anos, 20.000+ atendimentos em clínicas de SP.">
+    <title>Diagnóstico Gratuito de Conformidade | MetalTec SP</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'metaltec-green': '#1a472a',
+                        'metaltec-green-dark': '#0f2e1a',
+                        'metaltec-green-light': '#2d6a44',
+                        'metaltec-gold': '#c9a961',
+                    },
+                    fontFamily: { 'sans': ['Inter', 'system-ui', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { color: #1a1a1a; }
+        .hero-bg {
+            background: linear-gradient(135deg, #0f2e1a 0%, #1a472a 50%, #0f2e1a 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero-bg::before {
+            content: ''; position: absolute; inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(45, 106, 68, 0.4) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(201, 169, 97, 0.15) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(26, 71, 42, 0.12); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .faq-icon { transition: transform 0.3s ease; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .form-input:focus { outline: none; border-color: #1a472a; box-shadow: 0 0 0 4px rgba(26, 71, 42, 0.1); }
+        .success-message { display: none; }
+        .success-message.show { display: block; }
+        @keyframes pulse-whatsapp {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            50% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+        }
+        .whatsapp-float { animation: pulse-whatsapp 2s infinite; }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-white shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">⚙️</span>
+                <span class="text-xl sm:text-2xl font-extrabold text-metaltec-green tracking-tight">MetalTec SP</span>
+            </div>
+            <a href="#diagnostico" class="bg-metaltec-green hover:bg-metaltec-green-dark text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-lg text-sm font-semibold transition shadow-md">
+                Quero meu Diagnóstico
+            </a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-bg pt-32 pb-20 lg:pt-40 lg:pb-32 px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-metaltec-gold/20 border border-metaltec-gold/40 text-metaltec-gold px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-6">
+                <span class="w-2 h-2 bg-metaltec-gold rounded-full animate-pulse"></span>
+                A ÚNICA EMPRESA EM SP QUE CUIDA SÓ DE AUTOCLAVES
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] mb-6">
+                Sua autoclave passa nos<br>
+                <span class="text-metaltec-gold">12 itens que a Vigilância verifica?</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-gray-200 mb-4 max-w-2xl mx-auto leading-relaxed">
+                Se você baixou nosso checklist, já sabe o que está em jogo.<br>
+                O próximo passo é um técnico confirmar pessoalmente.
+            </p>
+            <p class="text-base text-metaltec-gold/80 mb-10 font-medium">
+                Sua autoclave. Nossa responsabilidade.
+            </p>
+
+            <a href="#diagnostico" class="inline-block bg-metaltec-gold hover:bg-yellow-600 text-metaltec-green-dark px-10 py-4 rounded-lg font-bold text-lg transition shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5">
+                QUERO MEU DIAGNÓSTICO GRATUITO →
+            </a>
+            <p class="text-gray-400 text-sm mt-4">Sem compromisso. Diagnóstico por escrito. Vagas limitadas.</p>
+
+            <div class="mt-12 grid grid-cols-3 gap-4 max-w-lg mx-auto">
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-metaltec-gold">15+</div>
+                    <div class="text-xs sm:text-sm text-gray-300">Anos de especialização</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-metaltec-gold">20k+</div>
+                    <div class="text-xs sm:text-sm text-gray-300">Atendimentos em SP</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-metaltec-gold">100%</div>
+                    <div class="text-xs sm:text-sm text-gray-300">Foco em autoclaves</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O QUE ESTÁ EM JOGO -->
+    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <span class="inline-block text-metaltec-green font-semibold text-sm uppercase tracking-wider mb-3">O que está em jogo</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Não é a autoclave que vai te autuar.<br class="hidden sm:block"> É a documentação.
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    A maioria das autuações em SP não vem de equipamento com defeito. Vem de clínicas que achavam que estavam em conformidade.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+                <div class="card-hover bg-red-50 border border-red-100 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-5 text-3xl">⚠️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Laudo IQ/OQ vencido</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        O laudo tem validade — geralmente 12 meses. Autoclave funcionando perfeitamente, mas sem laudo atualizado: autuação garantida na primeira visita da vigilância.
+                    </p>
+                </div>
+                <div class="card-hover bg-amber-50 border border-amber-100 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-5 text-3xl">📋</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Registro de ciclos incompleto</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        A vigilância pede o histórico de cada ciclo rodado — gráfico de pressão, temperatura, tempo, operador. Sem esse registro, não importa que a autoclave funcione.
+                    </p>
+                </div>
+                <div class="card-hover bg-blue-50 border border-blue-100 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-5 text-3xl">🧫</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Indicador biológico mensal (insuficiente)</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        A norma exige indicador biológico <em>semanal</em>. Em cargas com implantes, por carga. Quem faz uma vez por mês está violando a RDC 15/2012 sem saber.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTRATO TRANQUILIDADE -->
+    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <span class="inline-block text-metaltec-green font-semibold text-sm uppercase tracking-wider mb-3">A solução</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                    Contrato Tranquilidade MetalTec
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Você não chama a MetalTec. A MetalTec chama você. Agendamos, executamos, documentamos — você só recebe o laudo.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-6">
+                <!-- Tier 1 -->
+                <div class="card-hover bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+                    <div class="text-sm font-bold text-metaltec-green uppercase tracking-wider mb-2">Tranquilidade Solo</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900 mb-4">1 autoclave · 1 técnico por ano</h3>
+                    <ul class="space-y-3 text-sm text-gray-700 mb-8">
+                        <li class="flex gap-2"><span class="text-metaltec-green font-bold">✓</span> Visita técnica anual</li>
+                        <li class="flex gap-2"><span class="text-metaltec-green font-bold">✓</span> Laudo IQ/OQ incluído</li>
+                        <li class="flex gap-2"><span class="text-metaltec-green font-bold">✓</span> Atendimento prioritário via Claudete</li>
+                        <li class="flex gap-2"><span class="text-metaltec-green font-bold">✓</span> Garantia de conformidade ANVISA</li>
+                    </ul>
+                    <a href="#diagnostico" class="block text-center border-2 border-metaltec-green text-metaltec-green hover:bg-metaltec-green hover:text-white px-5 py-3 rounded-lg font-semibold text-sm transition">
+                        Começar →
+                    </a>
+                </div>
+
+                <!-- Tier 2 — DESTAQUE -->
+                <div class="card-hover bg-metaltec-green rounded-2xl p-8 shadow-xl relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-metaltec-gold text-metaltec-green-dark px-5 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                        MAIS ESCOLHIDO
+                    </div>
+                    <div class="text-sm font-bold text-metaltec-gold uppercase tracking-wider mb-2">Tranquilidade Clínica</div>
+                    <h3 class="text-2xl font-extrabold text-white mb-4">1 autoclave · visita semestral</h3>
+                    <ul class="space-y-3 text-sm text-gray-200 mb-8">
+                        <li class="flex gap-2"><span class="text-metaltec-gold font-bold">✓</span> Visitas técnicas semestrais</li>
+                        <li class="flex gap-2"><span class="text-metaltec-gold font-bold">✓</span> Laudos IQ/OQ/PQ completos</li>
+                        <li class="flex gap-2"><span class="text-metaltec-gold font-bold">✓</span> Suporte prioritário (resposta em 2h)</li>
+                        <li class="flex gap-2"><span class="text-metaltec-gold font-bold">✓</span> OS digital com histórico auditável</li>
+                        <li class="flex gap-2"><span class="text-metaltec-gold font-bold">✓</span> Garantia de conformidade ANVISA</li>
+                        <li class="flex gap-2"><span class="text-metaltec-gold font-bold">✓</span> Autoclave reserva em 24h se necessário</li>
+                    </ul>
+                    <a href="#diagnostico" class="block text-center bg-metaltec-gold hover:bg-yellow-500 text-metaltec-green-dark px-5 py-3 rounded-lg font-bold text-sm transition">
+                        Quero este →
+                    </a>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="card-hover bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+                    <div class="text-sm font-bold text-metaltec-green uppercase tracking-wider mb-2">Tranquilidade Rede</div>
+                    <h3 class="text-2xl font-extrabold text-gray-900 mb-4">Multi-autoclaves · SLA dedicado</h3>
+                    <ul class="space-y-3 text-sm text-gray-700 mb-8">
+                        <li class="flex gap-2"><span class="text-metaltec-green font-bold">✓</span> Contrato multi-equipamento</li>
+                        <li class="flex gap-2"><span class="text-metaltec-green font-bold">✓</span> SLA com prazo garantido em contrato</li>
+                        <li class="flex gap-2"><span class="text-metaltec-green font-bold">✓</span> Portal da Tranquilidade (acesso para fiscal)</li>
+                        <li class="flex gap-2"><span class="text-metaltec-green font-bold">✓</span> Responsável técnico nomeado</li>
+                        <li class="flex gap-2"><span class="text-metaltec-green font-bold">✓</span> Treinamento dos operadores incluído</li>
+                    </ul>
+                    <a href="#diagnostico" class="block text-center border-2 border-metaltec-green text-metaltec-green hover:bg-metaltec-green hover:text-white px-5 py-3 rounded-lg font-semibold text-sm transition">
+                        Falar com especialista →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Garantia -->
+            <div class="mt-10 bg-metaltec-green/5 border border-metaltec-green/20 rounded-2xl p-8 text-center max-w-3xl mx-auto">
+                <div class="text-4xl mb-3">🛡️</div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Garantia de Conformidade MetalTec</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    Se sua clínica for autuada por item dentro do escopo do nosso contrato, <strong>refazemos o serviço sem custo adicional</strong>. Toda calibração vem com laudo INMETRO. Toda peça trocada tem garantia de 90 dias.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROVA SOCIAL -->
+    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-14">
+                <span class="inline-block text-metaltec-green font-semibold text-sm uppercase tracking-wider mb-3">Quem confia</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+                    Clínicas que dormem tranquilas
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    <div class="flex gap-1 text-metaltec-gold text-lg mb-4">★★★★★</div>
+                    <p class="text-gray-700 text-base leading-relaxed mb-6 italic">
+                        "Trabalhamos com a MetalTec há mais de 8 anos no plano preventivo. Nunca tivemos problemas em fiscalizações da ANVISA e nossas autoclaves duram muito mais."
+                    </p>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-200">
+                        <div class="w-12 h-12 bg-metaltec-green rounded-full flex items-center justify-center text-white font-bold">MS</div>
+                        <div>
+                            <div class="font-bold text-gray-900">Marina Santos</div>
+                            <div class="text-sm text-gray-500">Gerente de Operações — Laboratório Vita, SP</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    <div class="flex gap-1 text-metaltec-gold text-lg mb-4">★★★★★</div>
+                    <p class="text-gray-700 text-base leading-relaxed mb-6 italic">
+                        "A vigilância veio sem aviso. Em 20 minutos mostrei todos os laudos pelo Portal — o fiscal ficou surpreso com a organização. MetalTec faz diferença quando o momento é esse."
+                    </p>
+                    <div class="flex items-center gap-4 pt-4 border-t border-gray-200">
+                        <div class="w-12 h-12 bg-metaltec-green rounded-full flex items-center justify-center text-white font-bold">RA</div>
+                        <div>
+                            <div class="font-bold text-gray-900">Dr. Ricardo Almeida</div>
+                            <div class="text-sm text-gray-500">Clínica Odontológica — Pinheiros, SP</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section id="diagnostico" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-metaltec-green-dark via-metaltec-green to-metaltec-green-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+        <div class="max-w-3xl mx-auto relative z-10">
+            <div class="text-center mb-10">
+                <span class="inline-block bg-metaltec-gold/20 border border-metaltec-gold/40 text-metaltec-gold px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+                    Vagas limitadas — 12 diagnósticos gratuitos por mês
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
+                    Solicite seu Diagnóstico Gratuito
+                </h2>
+                <p class="text-lg text-gray-200">
+                    Um técnico nosso vai à sua clínica, verifica os 12 itens do checklist e entrega um diagnóstico por escrito. <strong class="text-metaltec-gold">Sem custo. Sem compromisso.</strong>
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-2xl">
+                <div id="successMessage" class="success-message bg-green-50 border-2 border-green-200 rounded-xl p-6 text-center">
+                    <div class="text-5xl mb-3">✅</div>
+                    <h3 class="text-2xl font-bold text-green-800 mb-2">Solicitação enviada!</h3>
+                    <p class="text-green-700">Recebemos seu contato. Um especialista MetalTec vai entrar em contato pelo WhatsApp em até 2 horas úteis.</p>
+                </div>
+
+                <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                    <div>
+                        <label for="nome" class="block text-sm font-semibold text-gray-800 mb-2">Seu nome <span class="text-red-500">*</span></label>
+                        <input type="text" id="nome" name="nome" required placeholder="Dr(a). Nome completo"
+                            class="form-input w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-base transition">
+                    </div>
+                    <div>
+                        <label for="whatsapp" class="block text-sm font-semibold text-gray-800 mb-2">WhatsApp <span class="text-red-500">*</span></label>
+                        <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999"
+                            class="form-input w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-base transition">
+                    </div>
+                    <div>
+                        <label for="clinica" class="block text-sm font-semibold text-gray-800 mb-2">Tipo de clínica <span class="text-red-500">*</span></label>
+                        <select id="clinica" name="clinica" required
+                            class="form-input w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-base transition bg-white">
+                            <option value="">Selecione...</option>
+                            <option value="odontologica">Clínica Odontológica</option>
+                            <option value="veterinaria">Clínica Veterinária</option>
+                            <option value="medica">Clínica Médica</option>
+                            <option value="estetica">Clínica Estética</option>
+                            <option value="outra">Outro</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="observacao" class="block text-sm font-semibold text-gray-800 mb-2">Quantos itens do checklist você já consegue confirmar? (opcional)</label>
+                        <textarea id="observacao" name="observacao" rows="3"
+                            placeholder="Ex: tenho laudo IQ/OQ mas não sei se está válido, registro de ciclos não faço..."
+                            class="form-input w-full px-4 py-3.5 border-2 border-gray-200 rounded-lg text-base transition resize-none"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-metaltec-gold hover:bg-yellow-600 text-metaltec-green-dark font-extrabold py-4 px-6 rounded-lg text-base sm:text-lg transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        QUERO MEU DIAGNÓSTICO GRATUITO →
+                    </button>
+                    <p class="text-center text-sm text-gray-500 mt-4">🔒 Seus dados estão seguros. Respondemos em até 2 horas úteis.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">Dúvidas frequentes</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="faq-item bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-100 transition">
+                        <span class="font-bold text-gray-900 text-base pr-4">O diagnóstico é realmente gratuito?</span>
+                        <span class="faq-icon text-2xl text-metaltec-green flex-shrink-0">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-700 leading-relaxed">
+                            Sim, o diagnóstico de conformidade é gratuito — um técnico vai até sua clínica, verifica os 12 itens e entrega um relatório por escrito. Não há compromisso de contratação. Se após o diagnóstico você quiser resolver os pontos irregulares, apresentamos uma proposta. Sem pressão.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-100 transition">
+                        <span class="font-bold text-gray-900 text-base pr-4">Quanto tempo leva o diagnóstico?</span>
+                        <span class="faq-icon text-2xl text-metaltec-green flex-shrink-0">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-700 leading-relaxed">
+                            A visita dura em torno de 45 minutos a 1 hora, dependendo do número de autoclaves e da documentação disponível. Ao final, você já sabe quais itens estão conformes e quais precisam de ação.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-100 transition">
+                        <span class="font-bold text-gray-900 text-base pr-4">Por que vocês fazem só autoclaves?</span>
+                        <span class="faq-icon text-2xl text-metaltec-green flex-shrink-0">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-700 leading-relaxed">
+                            Porque especialização gera qualidade. Assistência generalista divide atenção entre dezenas de equipamentos. A MetalTec SP cuida só de autoclaves há 15 anos — nossos técnicos conhecem cada variação de cada marca. Isso não é possível sem foco.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-100 transition">
+                        <span class="font-bold text-gray-900 text-base pr-4">Minha autoclave é nova. Preciso de laudo assim mesmo?</span>
+                        <span class="faq-icon text-2xl text-metaltec-green flex-shrink-0">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-700 leading-relaxed">
+                            Sim. Autoclave nova sem laudo de qualificação (IQ/OQ) instalado = autuação na primeira visita da vigilância. O laudo não atesta que o equipamento é bom — atesta que foi instalado e qualificado conforme a norma na sua clínica específica. É obrigação documental, não técnica.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="https://wa.me/5511914614991" class="inline-flex items-center gap-2 bg-metaltec-green hover:bg-metaltec-green-dark text-white px-7 py-3.5 rounded-lg font-semibold transition shadow-md">
+                    💬 Falar com especialista no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-metaltec-green-dark text-white py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <span class="text-3xl">⚙️</span>
+                <span class="text-2xl font-extrabold">MetalTec SP</span>
+            </div>
+            <p class="text-gray-300 text-sm mb-2">
+                A única empresa em SP dedicada exclusivamente a autoclaves. 15 anos, 20.000+ atendimentos.
+            </p>
+            <p class="text-metaltec-gold font-semibold text-sm mb-6">Sua autoclave. Nossa responsabilidade.</p>
+            <div class="flex justify-center gap-8 text-sm text-gray-400">
+                <a href="tel:+5511914614991" class="hover:text-white transition">(11) 91461-4991</a>
+                <a href="https://wa.me/5511914614991" class="hover:text-white transition">WhatsApp</a>
+                <a href="https://metaltecsp.com.br" class="hover:text-white transition">metaltecsp.com.br</a>
+            </div>
+            <div class="border-t border-white/10 pt-6 mt-6 text-xs text-gray-500">
+                <p>© 2026 MetalTec SP. CNPJ: 14.551.772/0001-26</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/5511914614991?text=Ol%C3%A1%2C%20vim%20pelo%20checklist%20e%20quero%20o%20diagn%C3%B3stico%20gratuito"
+        target="_blank" rel="noopener noreferrer"
+        class="whatsapp-float fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-2xl transition transform hover:scale-110"
+        aria-label="Falar no WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <script>
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const wasActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+            if (!wasActive) item.classList.add('active');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('leadForm');
+            const successMsg = document.getElementById('successMessage');
+            const nome = document.getElementById('nome').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const clinica = document.getElementById('clinica').value;
+            if (!nome || !whatsapp || !clinica) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+            form.style.display = 'none';
+            successMsg.classList.add('show');
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return false;
+        }
+
+        document.getElementById('whatsapp').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            if (value.length > 6) value = `(${value.slice(0,2)}) ${value.slice(2,7)}-${value.slice(7)}`;
+            else if (value.length > 2) value = `(${value.slice(0,2)}) ${value.slice(2)}`;
+            else if (value.length > 0) value = `(${value}`;
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
