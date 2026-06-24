@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Loja MetalTec — Peças para autoclave, autoclaves recondicionadas e osmose em São Paulo. Frete grátis capital.">
+  <meta name="theme-color" content="#0B2240">
+  <title>Loja MetalTec | Peças, Autoclaves e Osmose em São Paulo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:      #0B2240; --navy-deep: #061327; --navy-mid: #112d52;
+      --orange:    #FF5C00; --orange-dark: #d94e00;
+      --warm-white:#FFFAF7; --soft-bg:   #F4F6F9;
+      --text:      #0D1117; --text-muted: #444C56; --border: #E1E7EE;
+      --green:     #25D366; --red: #e53935; --amber: #f59e0b;
+      --shadow-sm: 0 2px 8px rgba(11,34,64,.06);
+      --shadow-md: 0 8px 28px rgba(11,34,64,.12);
+      --font-head: 'Space Grotesk', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --max: 1200px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--warm-white); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; cursor: pointer; border: 0; background: none; }
+    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    h1, h2, h3 { font-family: var(--font-head); font-weight: 700; line-height: 1.15; letter-spacing: -.02em; }
+
+    /* ---- FRETE BANNER ---- */
+    .frete-banner {
+      background: linear-gradient(90deg, #0a3d1e 0%, #0d5429 100%);
+      color: #fff; text-align: center;
+      padding: 9px 24px; font-size: .85rem; font-weight: 500;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      position: sticky; top: 0; z-index: 90;
+    }
+    .frete-banner svg { flex-shrink: 0; }
+    .frete-banner strong { color: #6ee7a0; }
+    .frete-sep { color: rgba(255,255,255,.35); margin: 0 6px; }
+
+    /* ---- NAV ---- */
+    .nav {
+      background: var(--navy-deep); border-bottom: 1px solid rgba(255,255,255,.06);
+      position: sticky; top: 37px; z-index: 80;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+    .logo-img { height: 38px; width: auto; }
+    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,.8); font-size: .9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a.active { color: var(--orange); font-weight: 600; }
+    .nav-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; padding: 9px 20px; border-radius: 8px; font-weight: 600; font-size: .9rem; transition: background .2s, transform .15s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--orange-dark); transform: translateY(-1px); }
+    .nav-burger { display: none; color: #fff; padding: 8px; }
+    @media (max-width: 880px) { .nav-links { display: none; } .nav-burger { display: inline-flex; } }
+
+    /* ---- HERO ---- */
+    .loja-hero { background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%); padding: 56px 0 44px; text-align: center; }
+    .eyebrow { display: inline-block; font-family: var(--font-head); font-size: .8rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .loja-hero h1 { color: #fff; font-size: clamp(1.7rem, 4vw, 2.7rem); margin-bottom: 10px; }
+    .loja-hero p { color: rgba(255,255,255,.6); max-width: 500px; margin: 0 auto; font-size: .97rem; }
+
+    /* ---- FILTERS BAR ---- */
+    .filters-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 0; position: sticky; top: 105px; z-index: 70; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+    .filters-inner { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 7px 18px; border-radius: 100px;
+      font-size: .875rem; font-weight: 500; transition: all .2s;
+      border: 1.5px solid var(--border); color: var(--text-muted); background: #fff;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .filter-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .filter-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .filter-btn.ofertas.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .filter-btn .count-badge { font-size: .72rem; background: rgba(0,0,0,.12); border-radius: 100px; padding: 1px 7px; }
+    .filter-btn.active .count-badge { background: rgba(255,255,255,.25); }
+    .filter-search { margin-left: auto; }
+    .filter-search input { padding: 7px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: .875rem; outline: none; transition: border-color .2s; }
+    .filter-search input:focus { border-color: var(--navy); }
+
+    /* ---- GRID ---- */
+    .loja-section { padding: 40px 0 80px; }
+    .produtos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
+    @media (max-width: 640px) { .produtos-grid { grid-template-columns: 1fr; gap: 16px; } }
+
+    /* ---- CARD ---- */
+    .produto-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: box-shadow .25s, transform .2s; box-shadow: var(--shadow-sm);
+    }
+    .produto-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+
+    /* Imagem + carrossel */
+    .card-img-wrap { position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--soft-bg); }
+    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: opacity .3s; }
+    .img-dots { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; }
+    .img-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.5); transition: background .2s; cursor: pointer; }
+    .img-dot.active { background: #fff; }
+    .img-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.45); color: #fff; border-radius: 50%; width: 30px; height: 30px; display: grid; place-items: center; opacity: 0; transition: opacity .2s; cursor: pointer; font-size: 1rem; }
+    .card-img-wrap:hover .img-nav { opacity: 1; }
+    .img-nav.prev { left: 8px; } .img-nav.next { right: 8px; }
+    .no-img { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #bdc3cc; gap: 8px; font-size: .82rem; }
+
+    /* Badges no topo da imagem */
+    .badge-stack { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; gap: 5px; }
+    .img-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 10px; border-radius: 100px;
+      font-size: .72rem; font-weight: 700; line-height: 1;
+      backdrop-filter: blur(6px);
+    }
+    .badge-cat-peca        { background: rgba(11,34,64,.8); color: #fff; }
+    .badge-cat-autoclave   { background: rgba(255,92,0,.9); color: #fff; }
+    .badge-cat-outro       { background: rgba(30,80,160,.85); color: #fff; }
+    .badge-cat-osmose      { background: rgba(2,132,199,.85); color: #fff; }
+    .badge-novo            { background: rgba(34,197,94,.9); color: #fff; }
+    .badge-usado           { background: rgba(245,158,11,.9); color: #fff; }
+    .badge-ultimo          {
+      background: var(--red); color: #fff;
+      animation: pulse-badge 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse-badge {
+      0%,100% { opacity: 1; } 50% { opacity: .72; }
+    }
+    .badge-oferta { background: var(--orange); color: #fff; }
+
+    /* Body */
+    .card-body { padding: 18px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .card-title { font-family: var(--font-head); font-size: .97rem; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .card-desc { font-size: .82rem; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-features { list-style: none; display: flex; flex-direction: column; gap: 3px; margin-top: 2px; }
+    .card-features li { font-size: .8rem; color: var(--text-muted); display: flex; align-items: center; gap: 7px; }
+    .card-features li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+
+    /* Preço */
+    .card-price-wrap { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
+    .price-de-por { display: flex; flex-direction: column; gap: 1px; }
+    .price-de { font-size: .8rem; color: #aaa; text-decoration: line-through; }
+    .price-por { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; color: var(--orange); }
+    .price-desconto { display: inline-block; background: var(--orange); color: #fff; font-size: .72rem; font-weight: 700; padding: 2px 8px; border-radius: 100px; margin-left: 6px; vertical-align: middle; }
+    .price-simples { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; color: var(--navy); }
+    .price-consulta { font-size: .9rem; color: var(--text-muted); }
+
+    /* CTA */
+    .card-footer-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; }
+    .btn-whats {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--green); color: #fff;
+      padding: 9px 16px; border-radius: 8px;
+      font-size: .84rem; font-weight: 600;
+      transition: filter .2s, transform .15s; white-space: nowrap; flex: 1; justify-content: center;
+    }
+    .btn-whats:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+    /* ---- ESTADOS ---- */
+    .skeleton-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
+    .skeleton { background: linear-gradient(90deg, #eef0f3 25%, #e2e5e9 50%, #eef0f3 75%); background-size: 400% 100%; animation: shimmer 1.4s infinite; border-radius: 16px; height: 370px; }
+    @keyframes shimmer { 0% { background-position: 100% 0 } 100% { background-position: -100% 0 } }
+    .empty-state { text-align: center; padding: 72px 24px; color: var(--text-muted); }
+    .empty-state svg { margin: 0 auto 14px; opacity: .3; }
+
+    /* ---- FOOTER ---- */
+    footer { background: var(--navy-deep); color: rgba(255,255,255,.7); padding: 48px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+    footer h4 { color: #fff; font-size: .9rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+    footer ul { list-style: none; }
+    footer ul li { padding: 4px 0; font-size: .92rem; }
+    footer a { color: rgba(255,255,255,.7); transition: color .2s; }
+    footer a:hover { color: var(--orange); }
+    .footer-about { color: rgba(255,255,255,.6); font-size: .92rem; max-width: 340px; }
+    .footer-about .logo-img { margin-bottom: 14px; height: 34px; }
+    .footer-bot { border-top: 1px solid rgba(255,255,255,.08); padding-top: 18px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .83rem; color: rgba(255,255,255,.45); }
+
+    /* ---- WA FLOAT ---- */
+    .wa-float { position: fixed; bottom: 24px; right: 24px; width: 58px; height: 58px; border-radius: 50%; background: var(--green); display: grid; place-items: center; box-shadow: 0 8px 28px rgba(37,211,102,.55); z-index: 90; transition: transform .25s; animation: wa-pulse 2s infinite; }
+    .wa-float:hover { transform: scale(1.08); }
+    @keyframes wa-pulse { 0% { box-shadow: 0 8px 28px rgba(37,211,102,.55), 0 0 0 0 rgba(37,211,102,.6); } 70% { box-shadow: 0 8px 28px rgba(37,211,102,.55), 0 0 0 16px rgba(37,211,102,0); } 100% { box-shadow: 0 8px 28px rgba(37,211,102,.55), 0 0 0 0 rgba(37,211,102,0); } }
+  </style>
+</head>
+<body>
+
+  <!-- FRETE BANNER -->
+  <div class="frete-banner">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    <strong>Frete grátis</strong> para São Paulo capital
+    <span class="frete-sep">|</span>
+    Demais regiões: a combinar
+  </div>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="index.html" aria-label="MetalTec — página inicial">
+        <img src="logo-site-transparent.png" alt="MetalTec" class="logo-img">
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html#problema">O Problema</a></li>
+          <li><a href="index.html#servicos">Serviços</a></li>
+          <li><a href="index.html#processo">Processo</a></li>
+          <li><a href="index.html#reviews">Avaliações</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="loja.html" class="active">Loja</a></li>
+        </ul>
+      </nav>
+      <a href="https://wa.me/5511914614991?text=Olá%2C%20quero%20fazer%20um%20orçamento." class="nav-cta" target="_blank" rel="noopener">Chamar agora</a>
+      <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="loja-hero">
+    <div class="container">
+      <span class="eyebrow">Loja MetalTec</span>
+      <h1>Peças e Equipamentos</h1>
+      <p>Peças originais, autoclaves recondicionadas e sistemas de osmose — com garantia de quem é especialista há 15 anos.</p>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <div class="filters-bar" id="filters-bar">
+    <div class="container filters-inner">
+      <button class="filter-btn active" data-cat="" data-ofertas="">Todos <span class="count-badge" id="cnt-todos">0</span></button>
+      <button class="filter-btn" data-cat="autoclave" data-ofertas="">Autoclaves <span class="count-badge" id="cnt-autoclave">0</span></button>
+      <button class="filter-btn" data-cat="outro_equipamento" data-ofertas="">Outros Equip. <span class="count-badge" id="cnt-outro_equipamento">0</span></button>
+      <button class="filter-btn" data-cat="osmose" data-ofertas="">Osmose <span class="count-badge" id="cnt-osmose">0</span></button>
+      <button class="filter-btn" data-cat="peca" data-ofertas="">Peças <span class="count-badge" id="cnt-peca">0</span></button>
+      <button class="filter-btn ofertas" data-cat="" data-ofertas="true">
+        🔥 Ofertas <span class="count-badge" id="cnt-ofertas">0</span>
+      </button>
+      <div class="filter-search">
+        <input type="search" id="search-input" placeholder="Buscar produto..." oninput="renderProdutos()">
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUTOS -->
+  <section class="loja-section">
+    <div class="container">
+      <div id="produtos-wrap">
+        <div class="skeleton-grid">
+          <div class="skeleton"></div><div class="skeleton"></div>
+          <div class="skeleton"></div><div class="skeleton"></div>
+          <div class="skeleton"></div><div class="skeleton"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <img src="logo-site-transparent.png" alt="MetalTec" class="logo-img">
+          <p>Especialistas em manutenção de autoclaves há 15 anos. Mais de 20.000 atendimentos em São Paulo.</p>
+        </div>
+        <div>
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="index.html#servicos">Manutenção Corretiva</a></li>
+            <li><a href="index.html#servicos">Manutenção Preventiva</a></li>
+            <li><a href="index.html#servicos">Laudo ANVISA</a></li>
+            <li><a href="loja.html">Loja</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="https://wa.me/5511917121402" target="_blank" rel="noopener">(11) 91712-1402</a></li>
+            <li><a href="mailto:contato@metaltecsp.com.br">contato@metaltecsp.com.br</a></li>
+            <li>São Paulo — SP</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bot">
+        <span>© 2026 MetalTec. Todos os direitos reservados.</span>
+        <span>CNPJ 18.003.803/0001-62</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WA FLOAT -->
+  <a href="https://wa.me/5511914614991?text=Olá%2C%20quero%20um%20orçamento." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.124 1.523 5.856L.057 23.215a.75.75 0 0 0 .926.926l5.356-1.466A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.698-.516-5.234-1.414l-.373-.217-3.878 1.06 1.082-3.776-.23-.386A9.96 9.96 0 0 1 2 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/></svg>
+  </a>
+
+  <script>
+    const SUPABASE_URL = 'https://yesjvjlmnlzwvzffzkoc.supabase.co';
+    const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inllc2p2amxtbmx6d3Z6ZmZ6a29jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5MTIyNDQsImV4cCI6MjA5NDQ4ODI0NH0._PlQ-yn7W-Aqudj1gdcd5mdzrCfuLQYBwjCs5UACKFg';
+    const WHATS = '5511917121402';
+
+    const CAT_LABEL = { peca: 'Peça', autoclave: 'Autoclave', outro_equipamento: 'Outro Equip.', osmose: 'Osmose' };
+    const CAT_CLASS = { peca: 'badge-cat-peca', autoclave: 'badge-cat-autoclave', outro_equipamento: 'badge-cat-outro', osmose: 'badge-cat-osmose' };
+
+    let todos = [];
+    let filtroCategoria = '';
+    let filtroOfertas = false;
+
+    async function carregarProdutos() {
+      try {
+        const res = await fetch(
+          `${SUPABASE_URL}/rest/v1/produtos_loja?select=*&ativo=eq.true&order=ordem.asc,created_at.desc`,
+          { headers: { apikey: ANON_KEY, Authorization: `Bearer ${ANON_KEY}` } }
+        );
+        if (!res.ok) throw new Error();
+        todos = await res.json();
+        atualizarContadores();
+        renderProdutos();
+      } catch {
+        document.getElementById('produtos-wrap').innerHTML =
+          `<div class="empty-state"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>Erro ao carregar produtos. Tente novamente.</p></div>`;
+      }
+    }
+
+    function atualizarContadores() {
+      const categorias = ['autoclave', 'outro_equipamento', 'osmose', 'peca'];
+      document.getElementById('cnt-todos').textContent = todos.length;
+      categorias.forEach(c => {
+        const el = document.getElementById('cnt-' + c);
+        if (el) el.textContent = todos.filter(p => p.categoria === c).length;
+      });
+      document.getElementById('cnt-ofertas').textContent = todos.filter(p => p.preco_de != null).length;
+    }
+
+    function renderProdutos() {
+      const busca = (document.getElementById('search-input').value || '').toLowerCase().trim();
+      let lista = todos;
+      if (filtroCategoria) lista = lista.filter(p => p.categoria === filtroCategoria);
+      if (filtroOfertas) lista = lista.filter(p => p.preco_de != null);
+      if (busca) lista = lista.filter(p => p.titulo.toLowerCase().includes(busca) || (p.descricao || '').toLowerCase().includes(busca));
+
+      const wrap = document.getElementById('produtos-wrap');
+      if (lista.length === 0) {
+        wrap.innerHTML = `<div class="empty-state"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg><p>Nenhum produto encontrado nesta categoria.</p></div>`;
+        return;
+      }
+      wrap.innerHTML = `<div class="produtos-grid">${lista.map(renderCard).join('')}</div>`;
+      wrap.querySelectorAll('.card-img-wrap[data-imgs]').forEach(initCarrossel);
+    }
+
+    function renderCard(p) {
+      const temImgs = p.imagens && p.imagens.length > 0;
+      const temDePor = p.preco_de != null && p.preco != null;
+      const desconto = temDePor ? Math.round((1 - p.preco / p.preco_de) * 100) : 0;
+      const imgAttr = temImgs ? `data-imgs='${JSON.stringify(p.imagens)}'` : '';
+
+      // ---- Imagem ----
+      const imgHtml = temImgs
+        ? `<img src="${esc(p.imagens[0])}" alt="${esc(p.titulo)}" loading="lazy">
+           ${p.imagens.length > 1 ? `<button class="img-nav prev">&#8249;</button><button class="img-nav next">&#8250;</button><div class="img-dots">${p.imagens.map((_,i)=>`<button class="img-dot${i===0?' active':''}" data-i="${i}"></button>`).join('')}</div>` : ''}`
+        : `<div class="no-img"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Sem foto</div>`;
+
+      // ---- Badges ----
+      const badges = [
+        `<span class="img-badge ${CAT_CLASS[p.categoria] || 'badge-cat-peca'}">${CAT_LABEL[p.categoria] || p.categoria}</span>`,
+        p.condicao === 'novo'
+          ? `<span class="img-badge badge-novo">✦ Novo</span>`
+          : `<span class="img-badge badge-usado">↺ Usado Revisado</span>`,
+        p.estoque === 1 ? `<span class="img-badge badge-ultimo">⚡ Último em estoque</span>` : '',
+        temDePor ? `<span class="img-badge badge-oferta">🔥 -${desconto}% OFF</span>` : ''
+      ].filter(Boolean).join('');
+
+      // ---- Preço ----
+      const precoHtml = temDePor
+        ? `<div class="price-de-por">
+             <span class="price-de">De R$ ${fmt(p.preco_de)}</span>
+             <span>
+               <span class="price-por">R$ ${fmt(p.preco)}</span>
+               <span class="price-desconto">-${desconto}% OFF</span>
+             </span>
+           </div>`
+        : p.preco != null
+          ? `<span class="price-simples">R$ ${fmt(p.preco)}</span>`
+          : `<span class="price-consulta">Sob consulta</span>`;
+
+      // ---- Características ----
+      const caracHtml = p.caracteristicas && p.caracteristicas.length
+        ? `<ul class="card-features">${p.caracteristicas.slice(0, 4).map(c => `<li>${esc(c)}</li>`).join('')}</ul>`
+        : '';
+
+      const msg = encodeURIComponent(`Olá! Tenho interesse no produto "${p.titulo}" da loja do site. Pode me passar mais informações?`);
+
+      return `
+        <article class="produto-card">
+          <div class="card-img-wrap" ${imgAttr}>${imgHtml}<div class="badge-stack">${badges}</div></div>
+          <div class="card-body">
+            <h3 class="card-title">${esc(p.titulo)}</h3>
+            ${p.descricao ? `<p class="card-desc">${esc(p.descricao)}</p>` : ''}
+            ${caracHtml}
+            <div class="card-price-wrap">
+              ${precoHtml}
+              <div class="card-footer-row">
+                <a href="https://wa.me/${WHATS}?text=${msg}" class="btn-whats" target="_blank" rel="noopener">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.124 1.523 5.856L.057 23.215a.75.75 0 0 0 .926.926l5.356-1.466A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.698-.516-5.234-1.414l-.373-.217-3.878 1.06 1.082-3.776-.23-.386A9.96 9.96 0 0 1 2 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                  Pedir no WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function initCarrossel(wrap) {
+      const imgs = JSON.parse(wrap.dataset.imgs);
+      if (imgs.length <= 1) return;
+      let idx = 0;
+      const img = wrap.querySelector('img');
+      const dots = wrap.querySelectorAll('.img-dot');
+      function goTo(i) {
+        idx = (i + imgs.length) % imgs.length;
+        img.src = imgs[idx];
+        dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+      }
+      wrap.querySelector('.img-nav.prev').addEventListener('click', () => goTo(idx - 1));
+      wrap.querySelector('.img-nav.next').addEventListener('click', () => goTo(idx + 1));
+      dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
+    }
+
+    function fmt(v) { return Number(v).toLocaleString('pt-BR', { minimumFractionDigits: 2 }); }
+    function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    // Filtros
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filtroCategoria = btn.dataset.cat || '';
+        filtroOfertas = btn.dataset.ofertas === 'true';
+        renderProdutos();
+      });
+    });
+
+    // Mobile menu
+    const s = document.createElement('style');
+    s.textContent = `@media(max-width:880px){.nav-links.open{display:flex!important;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--navy-deep);padding:18px 24px;gap:14px;border-top:1px solid rgba(255,255,255,.08)}}`;
+    document.head.appendChild(s);
+
+    carregarProdutos();
+  </script>
+</body>
+</html>
